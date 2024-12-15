@@ -114,8 +114,6 @@ Follow these steps to start using NewsletterGen:
 
     ```bash
     poetry run newsletter_gen
-    # OR to run the Streamlit UI:
-    streamlit run src/gui/app.py
     ```
 
 ## 🏆 Achieve Newsletter Mastery
