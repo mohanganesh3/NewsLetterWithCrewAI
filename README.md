@@ -3,6 +3,7 @@
 Think of NewsletterGen as your **personal AI-powered newsletter team**, ready to provide you with the tools and insights you need to create compelling newsletters. This project uses cutting-edge AI technologies to research topics, generate engaging content, and compile it into professional HTML newsletters. 📈💻
 ## Demo 🎬
 1.Enter the page description here: This Instagram account represents a sustainable fashion brand focusing on eco-friendly materials and modern design. The brand targets young,                                            eco-conscious consumers who are passionate about both style and sustainability.
+
 2.Enter the topic of the week here:This week’s content will focus on showcasing our new eco-friendly winter collection, with a focus on sustainable fabrics and minimalist design.                                         The goal is to highlight the versatility and eco-conscious nature of the products
 
 ## Final Newsletter HTML
