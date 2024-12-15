@@ -133,7 +133,7 @@ We welcome contributions from anyone passionate about AI, newsletter creation, o
 3.  Commit your changes (`git commit -am 'Add new feature'`).
 4.  Push your changes (`git push origin feature-name`).
 5.  Submit a pull request.
-6.  
+  
 ## 📬 Get in Touch
 
 *   Author: Mohan Ganesh Gottipati
