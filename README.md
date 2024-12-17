@@ -27,137 +27,86 @@ we use Exa and CrewAI to build a team of AI research agents who, given any topic
 
 
 
+# Step 1: Create the Crew
+The first thing to do is to create the crew that will perform the tasks for us. We can build it ourselves using the core components of CrewAI (agents, tools, and tasks) or we can use the CrewAI CLI to create the crew for us. Let’s use the CLI to create the crew:
 
-## 🧠 What NewsletterGen Can Do For You
+    $ pip install crewai
+    $ crewai new newsletter-crew
+    
+This will create a new folder called **newsletter-crew**. You will find here all the components that you will need to create and orchestrate your agents. In it, you can also find the **src/config** folder, which contains the configuration files for your crew: **agents.yaml** and **tasks.yaml**. These will be automatically loaded to the CrewAI system if you are using the CLI.
 
-NewsletterGen is packed with features that make newsletter creation efficient and effective:
+Consider that this command initializes a Poetry project, so if you want to add any dependencies, you should do it using Poetry:
 
-*   **📊 Data-Driven Research:** Uncover the latest news and trends on any topic with AI-powered web research.
-*   **📝 AI-Generated Content:** Generate summaries, rewrites, and contextual explanations for news articles.
-*   **🎨 Automated HTML Compilation:** Compile researched and edited content into a ready-to-send HTML newsletter using a customizable template.
-*   **⚙️ Streamlined Workflow:** Automate the entire newsletter creation process from research to final output.
+    $ poetry add my-dependency
 
----
+# Step 2: Create the Tasks
 
-## 🌐 Project Structure – Your Newsletter Strategy, Simplified
+## Input and Output
+Before we start building our crew, we need to define the tasks that our agents will need to complete. This is the backbone of your crew. Once you have the tasks that your agents will perform, you can start creating your agents. But in order to define your tasks, you need to know what your input and expected output are. In our case:
 
-The NewsletterGen project is designed to be modular, scalable, and easy to use. Here’s a quick overview of its structure:
+- **Input**: the topic of the newsletter
+- **Output**: the HTML code of the newsletter.
+Once you have that, you can start listing the tasks that your agents will need to complete to get from input to expected output. Think of it as a to-do list for your agents.
 
-```
-NewsletterGen/
-├── knowledge/                   # Stores user preferences or other knowledge base files
-│   └── user_preference.txt
-├── logs/                        # Stores output logs from each stage of the process
-│   └── 2024-12-15_12-00-47_research_task.md
-│   └── 2024-12-15_12-00-47_newsletter_task.html
-│   └── 2024-12-15_12-00-47_edit_task.md
-├── src/
-│   ├── newsletter/              # Core newsletter generation modules
-│   │   ├── config/              # Configuration files (agents, tasks, template)
-│   │   │   ├── agents.yaml
-│   │   │   ├── tasks.yaml
-│   │   │   └── newsletter_template.html
-│   │   ├── tools/               # Custom tools for research and content processing
-│   │   │   ├── __init__.py
-│   │   │   └── research.py
-│   │   ├── __init__.py
-│   │   ├── crew.py              # Defines the CrewAI agents and tasks
-│   │   └── main.py              # Main entry point for running the newsletter generation
-│   ├── gui/                     # Streamlit app for user interaction
-│   │   └── app.py
-├── .env                         # Environment variables (API keys)
-├── .gitignore
-├── poetry.lock
-├── pyproject.toml
-└── README.md                    # You’re reading this! 😉
-```
+## How to Define Tasks
+This is usually where things can get tricky. But don’t worry! With some practice, you will be able to create a set of tasks for any automation within a few minutes!
 
----
+My advice is to make a list of the to-do items that you would need to complete the task yourself. Then, break down these items into specific and granular tasks that your agents can perform.
 
-## 💥 Why NewsletterGen?
+Here are some tips for creating your crew:
 
-### 1. AI-Powered Efficiency:
-
-Imagine having a dedicated team of AI agents working 24/7 to create your newsletters. NewsletterGen automates the research, content generation, and compilation processes, saving you valuable time and resources.
-
-### 2. Data-Driven Content:
-
-NewsletterGen leverages AI to find the most relevant and up-to-date news on your chosen topic, ensuring that your newsletters are informative and engaging.
-
-### 3. Customizable Templates:
-
-Use your own HTML templates to maintain brand consistency and create visually appealing newsletters.
-
-### 4. Streamlined Workflow:
-
-From topic selection to final HTML output, NewsletterGen provides a seamless and automated workflow for newsletter creation.
-
----
-
-## 🌟 Features That Will Make Your Newsletters Shine
-
-*   **📊 Comprehensive Research:** Stay informed with AI-driven web research that identifies key news stories and trends.
-*   **📝 Engaging Content Generation:** Create compelling summaries, rewrites, and contextual explanations to enhance your newsletter content.
-*   **🎨 Automated HTML Compilation:** Easily compile your content into professional-looking HTML newsletters using customizable templates.
-*   **⚙️ Flexible Configuration:** Customize the behavior of your AI agents and tasks using configuration files.
-*   **🖥️ User-Friendly Interface (Streamlit):** Interact with the newsletter generation process through a simple and intuitive Streamlit web app.
-
----
-
-## 🚀 Getting Started with NewsletterGen
-
-Follow these steps to start using NewsletterGen:
-
-1.  **Clone the Repository:**
-
-    ```bash
-    git clone <your_repo_url>
-    ```
-
-2.  **Install Dependencies:**
-
-    Use Poetry to manage project dependencies:
-
-    ```bash
-    pip install poetry
-    poetry install
-    ```
-
-3.  **Set Up Environment Variables:**
-
-    Create a `.env` file in the root directory and add your API keys:
-
-    ```
-    EXA_API_KEY=your_exa_api_key
-    GOOGLE_API_KEY=your_google_api_key
-    ```
-
-4.  **Run the Newsletter Generation:**
-
-    ```bash
-    poetry run newsletter_gen
-    ```
-
-## 🏆 Achieve Newsletter Mastery
-
-With NewsletterGen, you're not just sending out emails; you're delivering valuable, engaging content that keeps your audience informed and connected.
-
-*   **Save Time and Resources:** Automate the tedious aspects of newsletter creation.
-*   **Deliver High-Quality Content:** Provide your audience with informative and engaging news.
-*   **Maintain Brand Consistency:** Use customizable templates to reflect your brand identity.
-
-## 🤝 Contributing
-
-We welcome contributions from anyone passionate about AI, newsletter creation, or automation.
-
-1.  Fork the repository.
-2.  Create a new branch (`git checkout -b feature-name`).
-3.  Commit your changes (`git commit -am 'Add new feature'`).
-4.  Push your changes (`git push origin feature-name`).
-5.  Submit a pull request.
+- **Avoid tasks that are too complex**: If you try to perform too many actions in a single task, it can confuse the agent. For example, asking it to research a topic, summarize it, expand it, and reorder the results might be too much. Instead, break down the task into smaller, simpler tasks.
+- **Perform thorough testing until you get reliable results**: You will need to run your crew several times, varying your input to make sure that your agents are working correctly.
+- **Have a monitoring setup**: We will not cover monitoring and observability in this tutorial, but consider that you should be able to trace what your agents are thinking and doing. This is crucial for improving your prompts.
   
-## 📬 Get in Touch
+## For this tutorial, our tasks will be:
 
-*   Author: Mohan Ganesh Gottipati
-*   Email: mohanganesh165577@gmail.com
-*   GitHub: mohanganesh3
+1. Research task. To complete this task, the agent will need to:
+
+    - Search for the latest news on the given topic.
+    - Select the most relevant articles.
+    - Summarize the articles.
+2. Edit task. To complete this task, the agent will need to verify that the sources are correct and that the articles are relevant to the selected topic. The agent in charge of this task will also need to improve the summary, add a title, and a comment to the article.
+
+3. HTML task. To complete this task, the agent will need to replace the selected stories in an HTML template to generate the final newsletter file.
+
+        As I mentioned above, this is a trial and error process. I started off with 4 tasks (I had an extra summary task), but I found that the researcher can do the summary as well without any issues. So I removed the summary task, and now I have 3 tasks. :)
+
+## Fill the tasks.yaml File
+Now that we have our tasks, we can fill the tasks.yaml file with the tasks that our agents will need to complete. Think of it as writing the prompt for your agents. A task in CrewAI contains the following properties:
+
+- **Description**: A detailed prompt outlining what the task is supposed to do.
+- **Expected Output**: The expected output of the task. This is what the agent should return when the task is completed. You can use Few-Shot Learning (include a few examples of the expected output) here.
+- **Tools**: The tools that the agent can use to complete the task. You can also bind the tools to the agent instead of the task.
+
+# Step 3: Create the agents
+Now that we have our tasks, we can start creating the agents that will perform the tasks. An agent in CrewAI is a LangChain Runnable that can use tools to perform tasks. The agent can use the tools to perform the tasks that we defined in the **tasks.yaml** file.
+
+To initialize an **Agent** object, you can specify many parameters. But the most important ones are:
+
+- **Role**: This can be researcher, editor, html_generator, etc.
+- **Goal**: This is a brief description of what your agent’s overal goal is. Try to be precise and give your agent a good idea of what its importance is within the entire project.
+- **Backstory**: This is a brief description of the agent’s background. This is useful to give your agent a personality and a particular expertise. For example, you can say that the agent is a senior journalist known for its wit and humor. This will influence the writing style of the agent.
+
+# Step 4: Create the tools
+The tools are the functions that the agents will use to perform the tasks (that is why it is so important to use an LLM that supports function calling). We will then bind these tools to the agents when initializing them.
+
+In this example, we will be giving the research tools to the researcher and editor agents. The tools that we will be using will use the following methods from the Exa client:
+
+- **search_and_contents**: This tool will search a given query and return the full text contents each article.
+- **find_similar**: This tool will find similar articles to the ones that we pass in.
+-**get_contents**: This tool will get the contents of a given URL.
+
+# Step 5: Put everything together
+Once that everything is put together, you can put everything together in your **crew.py** file. This file will initialize the agents and tasks, bind the tools to the agents and create the crew.
+
+# Step 6: Run the crew
+Once everything is set up, you can run the crew using the CrewAI CLI. Remember that we are using poetry to manage the dependencies, so you should make sure that all your dependencies are installed in the virtual environment that you are using.
+
+## To run the crew, you can use the following command:
+
+    $ poetry lock
+    $ poetry install
+    $ poetry run <YOUR_CREW_NAME>
+    
+If you are unsure about the name of your crew, you can check the readme.md file that was generated by the CLI. It will contain detailed instructions on how to run your crew.
