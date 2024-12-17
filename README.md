@@ -2,11 +2,18 @@
 
 Think of NewsletterGen as your **personal AI-powered newsletter team**, ready to provide you with the tools and insights you need to create compelling newsletters. This project uses cutting-edge AI technologies to research topics, generate engaging content, and compile it into professional HTML newsletters. 📈💻
 
-# Planning our crew
+# What We Will Build
+we use Exa and CrewAI to build a team of AI research agents who, given any topic, can perform the following tasks for us:
+
+- Research and summarize the latest news on the given topic.
+- Verify that the sources are correct and that the articles are relevant to the selected topic.
+- Compile the top stories into a newsletter using an HTML template.
 
 <img width="660" alt="Screenshot 2024-12-17 at 2 44 04 PM" src="https://github.com/user-attachments/assets/6c155e3a-5f78-4003-8118-4c9d37369b13" />
 
+# Planning our crew
 
+![Screenshot 2024-12-17 at 2 47 33 PM](https://github.com/user-attachments/assets/697a3cf3-3e33-47be-93ca-0401c52d850b)
 
 
 ## Demo 🎬
