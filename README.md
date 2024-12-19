@@ -57,7 +57,7 @@ Here are some tips for creating your crew:
 
 3. HTML task. To complete this task, the agent will need to replace the selected stories in an HTML template to generate the final newsletter file.
 
-        As I mentioned above, this is a trial and error process. I started off with 4 tasks (I had an extra summary task), but I found that the researcher can do the summary as well without any issues. So I removed the summary task, and now I have 3 tasks. :)
+   As I mentioned above, this is a trial and error process. I started off with 4 tasks (I had an extra summary task), but I found that the researcher can do the summary as well without any issues. So I removed the summary task, and now I have 3 tasks. :)
 
 ## Fill the tasks.yaml File
 Now that we have our tasks, we can fill the tasks.yaml file with the tasks that our agents will need to complete. Think of it as writing the prompt for your agents. A task in CrewAI contains the following properties:
