@@ -11,11 +11,6 @@ we use Exa and CrewAI to build a team of AI research agents who, given any topic
 
 <img width="660" alt="Screenshot 2024-12-17 at 2 44 04 PM" src="https://github.com/user-attachments/assets/6c155e3a-5f78-4003-8118-4c9d37369b13" />
 
-# Planning our crew
-
-![Screenshot 2024-12-17 at 2 47 33 PM](https://github.com/user-attachments/assets/697a3cf3-3e33-47be-93ca-0401c52d850b)
-
-
 ## Demo 🎬
 1.Enter the page description here: This Instagram account represents a sustainable fashion brand focusing on eco-friendly materials and modern design. The brand targets young,                                            eco-conscious consumers who are passionate about both style and sustainability.
 
@@ -40,6 +35,8 @@ Consider that this command initializes a Poetry project, so if you want to add a
     $ poetry add my-dependency
 
 # Step 2: Create the Tasks
+
+![Screenshot 2024-12-17 at 2 47 33 PM](https://github.com/user-attachments/assets/697a3cf3-3e33-47be-93ca-0401c52d850b)
 
 ## Input and Output
 Before we start building our crew, we need to define the tasks that our agents will need to complete. This is the backbone of your crew. Once you have the tasks that your agents will perform, you can start creating your agents. But in order to define your tasks, you need to know what your input and expected output are. In our case:
