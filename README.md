@@ -46,7 +46,7 @@ Here are some tips for creating your crew:
 - **Perform thorough testing until you get reliable results**: You will need to run your crew several times, varying your input to make sure that your agents are working correctly.
 - **Have a monitoring setup**: We will not cover monitoring and observability in this tutorial, but consider that you should be able to trace what your agents are thinking and doing. This is crucial for improving your prompts.
   
-## For this tutorial, our tasks will be:
+## For this Project, our tasks will be:
 
 1. Research task. To complete this task, the agent will need to:
 
